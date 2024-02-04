@@ -9,7 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1f47c5b-1f1e-4a98-b1a1-5bead3c0bde9" name="Changes" comment="" />
+    <list default="true" id="a1f47c5b-1f1e-4a98-b1a1-5bead3c0bde9" name="Changes" comment="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/vistas/inicioSesion.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/vistas/registro.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DaoImplemt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DaoImplemt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/listarLibros.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/listarLibros.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/mostrarMasInformacion.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/mostrarMasInformacion.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +46,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
@@ -45,20 +59,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Eduardo/Desktop/PruebasJava/GestionLibros",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eduardo/Desktop/Reservas-main/ProyectoReservas_Eduardo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Eduardo\Desktop\PruebasJava\GestionLibros\src\main\webapp" />
@@ -78,6 +92,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="755abea2-d4e0-4274-95e3-8ad9ab4092ca" />
+        <option name="HTTP_PORT" value="8085" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -164,11 +179,28 @@
       <option name="presentableId" value="Default" />
       <updated>1706911174337</updated>
       <workItem from="1706911175765" duration="6085000" />
-      <workItem from="1706951693594" duration="13369000" />
+      <workItem from="1706951693594" duration="14048000" />
+      <workItem from="1706983486875" duration="9504000" />
+      <workItem from="1707010024025" duration="267000" />
+      <workItem from="1707039212507" duration="10376000" />
+      <workItem from="1707082671509" duration="2349000" />
     </task>
+    <task id="LOCAL-00001" summary="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro">
+      <option name="closed" value="true" />
+      <created>1706967166777</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706967166777</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro" />
   </component>
 </project>

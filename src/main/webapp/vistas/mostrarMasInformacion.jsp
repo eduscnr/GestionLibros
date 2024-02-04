@@ -10,25 +10,24 @@
 <html>
 <head>
     <title>Detalles del Libro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-4">
-            <img src="${libro.url}" alt="Portada del libro ${libro.titulo}" class="img-fluid">
-        </div>
-        <div class="col-md-8">
-            <h1>${libro.titulo}</h1>
-            <p><strong>Autor:</strong> ${libro.autor.nombre}</p>
-            <p><strong>Género:</strong> ${libro.genero.tipo}</p>
-            <p><strong>Descripción:</strong> ${libro.descripcion}</p>
-            <p><strong>Precio:</strong> ${libro.precio}€</p>
+<section class="text-gray-700 body-font overflow-hidden bg-white">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+            <img alt="ecommerce" class="lg:w-1/3 w-full object-cover object-center rounded border border-gray-200" src="${libro.url}">
+            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <h2 class="text-sm title-font text-gray-500 tracking-widest">${libro.autor.nombre}</h2>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${libro.titulo}</h1>
+                <p class="leading-relaxed">${libro.descripcion}</p>
+                <div class="flex mt-8">
+                    <span class="title-font font-medium text-2xl text-gray-900">${libro.precio}€</span>
+                    <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Comprar</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- Agregar el script de Bootstrap para JavaScript, opcional -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8y+JGf3itMYb6p8A+PqZlgyuDsFzKGgk5bFQK5tr5P5Qc/TDAHzdBz9CBAQ" crossorigin="anonymous"></script>
+</section>
 </body>
 </html>

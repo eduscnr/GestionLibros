@@ -3,8 +3,7 @@
 <html>
 <head>
     <title>Title</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         div {
             cursor: pointer;
@@ -12,23 +11,30 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="row">
+<h3>Bienvenido, ${sessionScope.usuario}!</h3>
+<c:if test="${!empty sessionScope.rol}">
+    <div class="max-w-4xl mx-auto grid grid-cols-3 gap-6">
         <c:forEach var="libro" items="${libros}">
-            <div class="col-md-4 mb-4" onclick="window.location='mostrarInformacion/${libro.idLibro}'">
-                <div class="card">
-                    <c:if test="${not empty libro.url}">
-                        <img src="${libro.url}" alt="libro de ${libro.titulo}" class="card-img-top">
-                    </c:if>
-                    <div class="card-body">
-                        <h5 class="card-title">${libro.titulo}</h5>
-                        <p class="card-text">${libro.autor.nombre}</p>
-                        <p class="card-text">${libro.precio}€</p>
+            <div class="bg-white shadow-md rounded-lg mx-2 w-72 xl:mb-0 mb-6 dark:bg-gray-800 dark:border-gray-700 mb-4 ml-4">
+                <a href="mostrarInformacion/${libro.idLibro}">
+                    <img class="rounded-t-lg p-8 mx-auto"
+                         src="${libro.url}" alt="product image">
+                </a>
+                <div class="px-5 pb-5">
+                    <a href="mostrarInformacion/${libro.idLibro}">
+                        <h3 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">${libro.titulo}</h3>
+                    </a>
+                    <h4 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">${libro.autor.nombre}</h4>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-3xl font-bold text-gray-900 dark:text-white">${libro.precio}€</span>
+                        <a href="#"
+                           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                            to cart</a>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
-</div>
+</c:if>
 </body>
 </html>

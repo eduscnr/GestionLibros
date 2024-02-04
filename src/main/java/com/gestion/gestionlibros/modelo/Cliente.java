@@ -14,18 +14,23 @@ public class Cliente {
     private long idCliente;
     private String nombre;
     private String apellido;
-    private String tipoDeCuenta;
+    private String password;
+    private String rol;
     @OneToMany(mappedBy = "idCliente", cascade = CascadeType.ALL)
     private List<Venta> ventasCliente = new ArrayList<>();
 
     public Cliente() {
     }
 
-    public Cliente(long idCliente, String nombre, String apellido, String tipoDeCuenta) {
+    public Cliente(long idCliente, String nombre, String apellido) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.tipoDeCuenta = tipoDeCuenta;
+    }
+
+    public Cliente(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
     public long getIdCliente() {
@@ -52,14 +57,6 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public String getTipoDeCuenta() {
-        return tipoDeCuenta;
-    }
-
-    public void setTipoDeCuenta(String tipoDeCuenta) {
-        this.tipoDeCuenta = tipoDeCuenta;
-    }
-
     public List<Venta> getVentasCliente() {
         return ventasCliente;
     }
@@ -68,14 +65,28 @@ public class Cliente {
         this.ventasCliente = ventasCliente;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" +
                 "idCliente=" + idCliente +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                ", tipoDeCuenta='" + tipoDeCuenta + '\'' +
-                ", ventasCliente=" + ventasCliente +
                 '}';
     }
 }
