@@ -3,7 +3,10 @@ package com.gestion.gestionlibros.modelo;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Component
 @Entity
 public class Venta {
@@ -14,12 +17,19 @@ public class Venta {
     private Date fechaVenta;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Cliente idCliente;
+    @OneToMany(mappedBy = "detallesVentasId.idVentas", cascade = CascadeType.ALL)
+    private List<DetallesVenta> detallesVentasList = new ArrayList<>();
 
     public Venta() {
     }
 
     public Venta(long idVenta, Date fechaVenta, Cliente idCliente) {
         this.idVenta = idVenta;
+        this.fechaVenta = fechaVenta;
+        this.idCliente = idCliente;
+    }
+
+    public Venta(Date fechaVenta, Cliente idCliente) {
         this.fechaVenta = fechaVenta;
         this.idCliente = idCliente;
     }
@@ -46,6 +56,14 @@ public class Venta {
 
     public void setIdCliente(Cliente idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public List<DetallesVenta> getDetallesVentasList() {
+        return detallesVentasList;
+    }
+
+    public void setDetallesVentasList(List<DetallesVenta> detallesVentasList) {
+        this.detallesVentasList = detallesVentasList;
     }
 
     @Override

@@ -9,8 +9,7 @@ import java.io.Serializable;
 public class DetallesVentaId implements Serializable {
     @ManyToOne
     private Venta idVentas;
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SECUENCIA_ID_DATELLEVENTAS")
-    @SequenceGenerator(name = "SECUENCIA_ID_DATELLEVENTAS", sequenceName = "GENERADOR_ID_DETALLEVENTAS", allocationSize = 1)
+
     @Column(unique = true)
     private int numLinea;
 
@@ -20,6 +19,23 @@ public class DetallesVentaId implements Serializable {
     public DetallesVentaId(Venta idVentas, int numLinea) {
         this.idVentas = idVentas;
         this.numLinea = numLinea;
+    }
+    public void incrementarNumLinea(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("upLibros");
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("SELECT MAX(d.detallesVentasId.numLinea) FROM DetallesVenta d");
+        if(query != null){
+            int numLineaMax = (int) query.getSingleResult();
+            em.close();
+            numLinea = numLineaMax+1;
+        }else{
+            numLinea = 1;
+            em.close();
+        }
+    }
+
+    public DetallesVentaId(Venta idVentas) {
+        this.idVentas = idVentas;
     }
 
     public Venta getIdVentas() {

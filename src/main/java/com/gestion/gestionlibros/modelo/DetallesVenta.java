@@ -26,6 +26,7 @@ public class DetallesVenta {
         this.pvp = pvp;
     }
 
+
     public DetallesVentaId getDetallesVentasId() {
         return detallesVentasId;
     }

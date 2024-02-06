@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<form:form class="min-h-screen bg-gray-900 flex flex-col justify-center sm:py-12"  action="iniciarSesion" method="post" modelAttribute="inicioUsuario">
+<form:form class="min-h-screen bg-gray-900 flex flex-col justify-center sm:py-12"  action="" method="post" modelAttribute="inicioUsuario">
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
         <h1 class="font-bold text-center text-2xl mb-5 text-white">Kobo</h1>
         <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">

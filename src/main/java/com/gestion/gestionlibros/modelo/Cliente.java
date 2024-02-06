@@ -33,6 +33,21 @@ public class Cliente {
         this.apellido = apellido;
     }
 
+    public Cliente(String nombre, String apellido, String password, String rol) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.password = password;
+        this.rol = rol;
+    }
+
+    public Cliente(long idCliente, String nombre, String apellido, String password, String rol) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.password = password;
+        this.rol = rol;
+    }
+
     public long getIdCliente() {
         return idCliente;
     }
@@ -84,9 +99,10 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "idCliente=" + idCliente +
-                ", nombre='" + nombre + '\'' +
+                "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
+                ", password='" + password + '\'' +
+                ", rol='" + rol + '\'' +
                 '}';
     }
 }

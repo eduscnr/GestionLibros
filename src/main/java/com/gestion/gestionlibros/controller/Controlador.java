@@ -1,7 +1,6 @@
 package com.gestion.gestionlibros.controller;
 
-import com.gestion.gestionlibros.modelo.Cliente;
-import com.gestion.gestionlibros.modelo.Libro;
+import com.gestion.gestionlibros.modelo.*;
 import com.gestion.gestionlibros.repositorio.DAO;
 import jakarta.servlet.http.HttpSession;
 import oracle.jdbc.proxy.annotation.Post;
@@ -11,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.crypto.Cipher;
+import java.util.ArrayList;
 import java.util.List;
 @Controller
 public class Controlador {
@@ -18,25 +18,42 @@ public class Controlador {
     private DAO dao;
     @Autowired
     private Cliente cliente;
+    @Autowired
+    private Libro libros;
+    private List<Carrito> listaCarrito = new ArrayList<>();
+    @PostMapping("/agregarAlCarrito")
+    public String agregarAlCarrito(@ModelAttribute("elementosCarrito") Carrito carrito, Model model) {
+        listaCarrito.add(carrito);
+        System.out.println("Mostrar lista");
+        for (Carrito car : listaCarrito){
+            if(car.getIdLibro() != 0){
+                System.out.println(car);
+            }
+        }
+        return "redirect:/verLibros";
+    }
     @RequestMapping("/verLibros")
     public String verLibros(Model modelo, HttpSession session){
         List<Libro> listaLibros = dao.listarLibros();
+        boolean carritoVacio = listaCarrito.isEmpty();
+        System.out.println(carritoVacio);
         String rolUsuario = (String) session.getAttribute("rol");
         System.out.println(rolUsuario);
         modelo.addAttribute("libros", listaLibros);
+        modelo.addAttribute("carritoVacio", carritoVacio);
         return "listarLibros";//JSP
     }
-    @GetMapping("/")
+    @GetMapping("/registrar")
     public String irFormulario(Model model){
         model.addAttribute("cliente", cliente);
         return "registro"; //JSP
     }
-    @PostMapping("/")
+    @PostMapping("/registrar")
     public String agregarUsuario(@ModelAttribute("cliente") Cliente cliente, HttpSession sesion){
         if(dao.agregarCliente(cliente)){
             sesion.setAttribute("usuario", cliente.getNombre());
             sesion.setAttribute("rol", cliente.getRol());
-            return "redirect:/verLibros";//JSP
+            return "redirect:/";//JSP
         }else{
             return "error";
         }
@@ -52,20 +69,98 @@ public class Controlador {
         }
     }
 
-    @GetMapping("/iniciarSesion")
+    @GetMapping("/")
     public String mostrarInicioSesion(Model modelo){
         modelo.addAttribute("inicioUsuario", cliente);
         return "inicioSesion";//JSP
     }
-    @PostMapping("/iniciarSesion")
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        listaCarrito.clear();
+        session.setAttribute("rol", null);
+        session.setAttribute("usuario", null);
+        cliente = new Cliente();
+        return "redirect:/";
+    }
+    @PostMapping("/")
     public String iniciarSesion(@ModelAttribute("inicioUsuario") Cliente cliente, HttpSession sesion){
-        Cliente clienteEncontrado = dao.buscarCliente(cliente);
-        if(clienteEncontrado != null){
-            sesion.setAttribute("usuario", clienteEncontrado.getNombre());
-            sesion.setAttribute("rol", clienteEncontrado.getRol());
+        Cliente clienteEncotrado = dao.buscarCliente(cliente);
+        if(clienteEncotrado != null){
+            sesion.setAttribute("usuario", clienteEncotrado.getNombre());
+            sesion.setAttribute("rol", clienteEncotrado.getRol());
+            this.cliente = clienteEncotrado;
+            System.out.println(this.cliente);
             return "redirect:/verLibros";
         }else{
             return "error";//JSP
         }
+    }
+
+    @GetMapping("/verCarrito")
+    public String verCarrito(Model model){
+        model.addAttribute("listaCarrito",listaCarrito);
+        return "verCarrito";
+    }
+
+    @PostMapping("/realizarCompra")
+    public String realizarPedido(){
+        if(dao.ingresarVenta(cliente, listaCarrito)){
+            return "redirect:/verListado";
+        }else{
+            return "error";//JSP
+        }
+    }
+
+    @GetMapping("/verHistorialCompra")
+    public String consultarHistorialCompra(Model model){
+        List<DetallesVenta> ventasRealizadas = new ArrayList<>();
+        for(Venta venta : cliente.getVentasCliente()){
+            for (DetallesVenta detallesVenta : venta.getDetallesVentasList()){
+                ventasRealizadas.add(detallesVenta);
+            }
+        }
+        model.addAttribute("detallesVentas", ventasRealizadas);
+        return "historialCompras";
+    }
+    @GetMapping("/edicionLibros")
+    public String mostrarLibrosEdicion(Model modelo){
+        List<Libro> libros = dao.listarLibros();
+        modelo.addAttribute("listaLibros", libros);
+        return "edicionLibros";
+    }
+    @PostMapping("/irNuevoLibro")
+    public String nuevoLibro(Model modelo){
+        modelo.addAttribute("libro", libros);
+        return "nuevoLibro";
+    }
+    @PostMapping("/nuevoLibro")
+    public String enviarLibros(@ModelAttribute("libro") Libro libro){
+        System.out.println("Paso por aquí?");
+        if(dao.insertarNuevoLibro(libro)){
+            return "redirect:/edicionLibros";
+        }
+        return "error";
+    }
+    @GetMapping("/editarLibro/{idLibro}")
+    public String irAEditarLibro(@PathVariable("idLibro") long idLibro,Model modelo){
+        Libro libro = dao.obtenerLibroPorId(idLibro);
+        modelo.addAttribute("libro", libro);
+        return "editarLibro";
+    }
+
+    @PostMapping("/editarLibro")
+    public String libroEditado(@ModelAttribute("libro") Libro libro){
+        if(dao.insertarNuevoLibro(libro)){
+            return "redirect:/edicionLibros";
+        }
+        return "error";
+    }
+
+    @GetMapping("/eliminar/{idLibro}")
+    public String eliminarLibro(@PathVariable("idLibro") long idLibro){
+        if(dao.eliminarLibro(idLibro)){
+            return "redirect:/edicionLibros";
+        }
+        return "error";
     }
 }
