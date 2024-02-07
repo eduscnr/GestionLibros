@@ -27,6 +27,23 @@ public class DaoImplemt implements DAO{
     }
 
     @Override
+    public List<Genero> listarGeneros() {
+        em = emf.createEntityManager();
+        String hql = "from Genero g";
+        Query q = em.createQuery(hql);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Libro> bucarLibro(String tituloABuscar) {
+        em = emf.createEntityManager();
+        String hql = "from Libro l where l.titulo like :titulo";
+        Query query = em.createQuery(hql);
+        query.setParameter("titulo", "%" + tituloABuscar + "%");
+        return query.getResultList();
+    }
+
+    @Override
     public Libro obtenerLibroPorId(long idLib) {
         em = emf.createEntityManager();
         return em.find(Libro.class, idLib);

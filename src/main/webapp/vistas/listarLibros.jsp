@@ -25,7 +25,7 @@
                     <!-- Nav Links -->
                     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                         <li><a class="hover:text-gray-200" href="verLibros">Listado de libros</a></li>
-                        <li><a class="hover:text-gray-200" href="#">Categoria</a></li>
+                        <li><a class="hover:text-gray-200" href="verGeneros">Genero</a></li>
                         <c:if test="${sessionScope.rol eq 'usuario'}">
                             <li><a class="hover:text-gray-200" href="verHistorialCompra">Historial de compra</a></li>
                         </c:if>
@@ -99,6 +99,13 @@
             </nav>
         </section>
     </div>
+    <div class="flex justify-center items-center">
+        <form action="buscarLibros" method="get">
+            <input type="text" name="q" placeholder="Buscar por título..." class="mb-4 px-4 py-2 border rounded-lg">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Buscar</button>
+        </form>
+    </div>
+
     <div class="max-w-4xl mx-auto grid grid-cols-3 gap-6">
         <c:forEach var="libro" items="${libros}">
             <div class="bg-white shadow-md rounded-lg mx-2 w-72 xl:mb-0 mb-6 dark:bg-gray-800 dark:border-gray-700 mb-4 ml-4">

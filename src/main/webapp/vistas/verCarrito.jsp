@@ -40,7 +40,7 @@
                 <span>${carrito.cantidad}</span>
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                <a href="#" class="text-blue-400 hover:text-blue-600 underline pl-6">Eliminar</a>
+                <a href="eliminarElemento/${carrito.idLibro}" class="text-blue-400 hover:text-blue-600 underline pl-6">Eliminar</a>
             </td>
         </tr>
     </c:forEach>

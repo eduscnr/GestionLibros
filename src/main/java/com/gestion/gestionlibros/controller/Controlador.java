@@ -23,12 +23,15 @@ public class Controlador {
     private List<Carrito> listaCarrito = new ArrayList<>();
     @PostMapping("/agregarAlCarrito")
     public String agregarAlCarrito(@ModelAttribute("elementosCarrito") Carrito carrito, Model model) {
-        listaCarrito.add(carrito);
-        System.out.println("Mostrar lista");
+        boolean existe = false;
         for (Carrito car : listaCarrito){
-            if(car.getIdLibro() != 0){
-                System.out.println(car);
+            if(car.getIdLibro() == carrito.getIdLibro()){
+                car.setCantidad(car.getCantidad()+carrito.getCantidad());
+                existe = true;
             }
+        }
+        if(!existe){
+            listaCarrito.add(carrito);
         }
         return "redirect:/verLibros";
     }
@@ -36,9 +39,7 @@ public class Controlador {
     public String verLibros(Model modelo, HttpSession session){
         List<Libro> listaLibros = dao.listarLibros();
         boolean carritoVacio = listaCarrito.isEmpty();
-        System.out.println(carritoVacio);
         String rolUsuario = (String) session.getAttribute("rol");
-        System.out.println(rolUsuario);
         modelo.addAttribute("libros", listaLibros);
         modelo.addAttribute("carritoVacio", carritoVacio);
         return "listarLibros";//JSP
@@ -89,7 +90,6 @@ public class Controlador {
             sesion.setAttribute("usuario", clienteEncotrado.getNombre());
             sesion.setAttribute("rol", clienteEncotrado.getRol());
             this.cliente = clienteEncotrado;
-            System.out.println(this.cliente);
             return "redirect:/verLibros";
         }else{
             return "error";//JSP
@@ -105,7 +105,8 @@ public class Controlador {
     @PostMapping("/realizarCompra")
     public String realizarPedido(){
         if(dao.ingresarVenta(cliente, listaCarrito)){
-            return "redirect:/verListado";
+            listaCarrito.clear();
+            return "redirect:/verLibros";
         }else{
             return "error";//JSP
         }
@@ -135,7 +136,6 @@ public class Controlador {
     }
     @PostMapping("/nuevoLibro")
     public String enviarLibros(@ModelAttribute("libro") Libro libro){
-        System.out.println("Paso por aquí?");
         if(dao.insertarNuevoLibro(libro)){
             return "redirect:/edicionLibros";
         }
@@ -163,4 +163,30 @@ public class Controlador {
         }
         return "error";
     }
+
+    @GetMapping("/verGeneros")
+    public String listarGeneros(Model model){
+        List<Genero> generos = dao.listarGeneros();
+        model.addAttribute("listaGenero", generos);
+        return "verCategorias";
+    }
+    @GetMapping("/buscarLibros")
+    public String buscarLibros(@RequestParam("q") String titulo, Model model) {
+        List<Libro> librosEncontrados = dao.bucarLibro(titulo);
+        model.addAttribute("libros", librosEncontrados);
+        return "listarLibros";
+    }
+
+    @GetMapping("/eliminarElemento/{idLibro}")
+    public String eliminarElementoCarrito(@PathVariable("idLibro") long idLibro){
+        Carrito eliminar = null;
+        for (Carrito c : listaCarrito){
+            if(c.getIdLibro() == idLibro){
+                eliminar = c;
+            }
+        }
+        listaCarrito.remove(eliminar);
+        return"redirect:/verCarrito";
+    }
+
 }
