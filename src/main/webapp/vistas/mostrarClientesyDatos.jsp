@@ -13,10 +13,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<c:forEach var="cliente" items="${listaCliente}">
-    <h1>Nombre del cliente: ${cliente.nombre}</h1>
-    <c:forEach var="venta" items="${cliente.ventasCliente}">
-        <p>${venta.fechaVenta}</p>
+<form action="mostrarDetallesVenta" method="get" class="flex justify-center items-center">
+    <select name="fechaVenta">
+        <option value="">Mostrar todo</option>
+        <c:forEach var="fecha" items="${fechasVenta}">
+            <option value="${fecha.fechaVenta}">${fecha.fechaVenta}</option>
+        </c:forEach>
+    </select>
+    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Mostras</button>
+</form>
+<c:forEach var="venta" items="${listaVenta}">
+    <div class="flex justify-center items-center">
+    <h1>Nombre del cliente: ${venta.idCliente.nombre}</h1>
+        <p> Fecha de la venta: ${venta.fechaVenta}</p>
+    </div>
 <table class="border-collapse w-full">
     <thead>
     <tr>
@@ -36,13 +46,12 @@
             <span>${detalles.libroId.titulo}</span>
         </td>
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-            <span>${detalles.pvp}</span>
+            <span>${detalles.pvp}€</span>
         </td>
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
             <span>${detalles.cantidad}</span>
         </td>
     </tr>
-    </c:forEach>
 </table>
     </c:forEach>
 </c:forEach>

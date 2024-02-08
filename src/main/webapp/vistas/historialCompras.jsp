@@ -32,7 +32,7 @@
             <span>${detalles.libroId.titulo}</span>
         </td>
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-            <span>${detalles.pvp}</span>
+            <span>${detalles.pvp}€</span>
         </td>
         <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
             <span>${detalles.cantidad}</span>

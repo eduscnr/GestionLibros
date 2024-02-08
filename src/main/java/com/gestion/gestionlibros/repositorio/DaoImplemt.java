@@ -7,7 +7,6 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 
-import java.security.spec.ECField;
 import java.util.Date;
 import java.util.List;
 @Repository
@@ -35,11 +34,44 @@ public class DaoImplemt implements DAO{
     }
 
     @Override
+    public List<Venta> listarVentaes() {
+        em = emf.createEntityManager();
+        String hql = "from Venta v";
+        Query q = em.createQuery(hql);
+        return q.getResultList();
+    }
+
+    @Override
     public List<Libro> bucarLibro(String tituloABuscar) {
         em = emf.createEntityManager();
         String hql = "from Libro l where l.titulo like :titulo";
         Query query = em.createQuery(hql);
         query.setParameter("titulo", "%" + tituloABuscar + "%");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Venta> buscarVentaPorFecha(Date fecha) {
+        em = emf.createEntityManager();
+        String hql = "from Venta v where v.fechaVenta = :fecha";
+        Query query = em.createQuery(hql);
+        query.setParameter("fecha", fecha);
+        return query.getResultList();
+    }
+
+    @Override
+    public List buscarPorGenero(String genero) {
+        em = emf.createEntityManager();
+        String hql = "";
+        Query query = null;
+        if(genero.equalsIgnoreCase("")){
+            hql = "from Genero g";
+            query = em.createQuery(hql);
+        }else{
+            hql = "from Genero g where g.tipo = :genero";
+            query = em.createQuery(hql);
+            query.setParameter("genero", genero);
+        }
         return query.getResultList();
     }
 

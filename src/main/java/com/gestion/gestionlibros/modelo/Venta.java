@@ -15,7 +15,7 @@ public class Venta {
     @Id
     private long idVenta;
     private Date fechaVenta;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cliente idCliente;
     @OneToMany(mappedBy = "detallesVentasId.idVentas", cascade = CascadeType.ALL)
     private List<DetallesVenta> detallesVentasList = new ArrayList<>();

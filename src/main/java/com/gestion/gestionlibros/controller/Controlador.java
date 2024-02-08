@@ -168,6 +168,7 @@ public class Controlador {
     public String listarGeneros(Model model){
         List<Genero> generos = dao.listarGeneros();
         model.addAttribute("listaGenero", generos);
+        model.addAttribute("listaTodosLosGeneros", generos);
         return "verCategorias";
     }
     @GetMapping("/buscarLibros")
@@ -187,6 +188,15 @@ public class Controlador {
         }
         listaCarrito.remove(eliminar);
         return"redirect:/verCarrito";
+    }
+    @GetMapping("/mostrarLibrosPorGenero")
+    public String mostrarLibrosGenero(@RequestParam("generoSeleccionado") String genero, Model modelo){
+        List<Genero> listaLibroPorGenero = dao.buscarPorGenero(genero);
+        System.out.println(listaLibroPorGenero);
+        List<Genero> listarGeneros = dao.listarGeneros();
+        modelo.addAttribute("listaGenero", listaLibroPorGenero);
+        modelo.addAttribute("listaTodosLosGeneros", listarGeneros);
+        return "verCategorias";
     }
 
 }

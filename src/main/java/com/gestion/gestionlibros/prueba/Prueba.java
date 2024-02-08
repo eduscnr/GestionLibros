@@ -19,7 +19,10 @@ public class Prueba {
     static EntityManager em = emf.createEntityManager();
     static ApplicationContext context = new ClassPathXmlApplicationContext("configuracion-spring.xml");
     public static void main(String[] args) {
-        crearPersistenciaYDatos();
+        em.getTransaction().begin();
+        em.getTransaction().commit();
+        em.close();
+        /*crearPersistenciaYDatos();*/
     }
     public static void crearPersistenciaYDatos(){
 

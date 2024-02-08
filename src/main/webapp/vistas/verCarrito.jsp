@@ -34,7 +34,7 @@
                 <span>${carrito.titulo}</span>
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                <span>${carrito.precio}</span>
+                <span>${carrito.precio}€</span>
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <span>${carrito.cantidad}</span>

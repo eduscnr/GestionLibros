@@ -1,16 +1,17 @@
 package com.gestion.gestionlibros.repositorio;
 
-import com.gestion.gestionlibros.modelo.Carrito;
-import com.gestion.gestionlibros.modelo.Cliente;
-import com.gestion.gestionlibros.modelo.Genero;
-import com.gestion.gestionlibros.modelo.Libro;
+import com.gestion.gestionlibros.modelo.*;
 
+import java.util.Date;
 import java.util.List;
 
 public interface DAO {
     public List<Libro> listarLibros();
     public List<Genero> listarGeneros();
+    public List<Venta> listarVentaes();
     public List<Libro> bucarLibro(String tituloABuscar);
+    public List<Venta> buscarVentaPorFecha(Date fecha);
+    public List<Genero> buscarPorGenero(String genero);
     public Libro obtenerLibroPorId(long idLib);
     public Cliente obtenerClienteId(long idCliente);
     public boolean agregarCliente(Cliente cliente);

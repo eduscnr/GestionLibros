@@ -6,12 +6,12 @@ import com.gestion.gestionlibros.repositorio.DAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.GetExchange;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -39,8 +39,23 @@ public class ControladorAdministrador {
     }
     @GetMapping("/mostrarUsuariosyDatos")
     public String mostrarUsuariosyDatos(Model modeloCliente){
-        List<Cliente> listaCliente = dao.listaCliente();
-        modeloCliente.addAttribute("listaCliente", listaCliente);
+        List<Venta> listaVenta = dao.listarVentaes();
+        modeloCliente.addAttribute("listaVenta", listaVenta);
+        modeloCliente.addAttribute("fechasVenta", listaVenta);
+        return "mostrarClientesyDatos";
+    }
+    @GetMapping("/mostrarDetallesVenta")
+    public String mostrarDetallesVentaFecha(@RequestParam("fechaVenta") String fechaVenta, Model modelo){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Formato de fecha esperado
+        Date fecha = null;
+        try {
+            fecha = dateFormat.parse(fechaVenta);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        List<Venta> listaVenta = dao.buscarVentaPorFecha(fecha);
+        modelo.addAttribute("listaVenta", listaVenta);
+        modelo.addAttribute("fechasVenta", dao.listarVentaes());
         return "mostrarClientesyDatos";
     }
 }

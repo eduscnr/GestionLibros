@@ -10,14 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1f47c5b-1f1e-4a98-b1a1-5bead3c0bde9" name="Changes" comment="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/vistas/verCategorias.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/ControladorAdministrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/ControladorAdministrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/Venta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/Venta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/prueba/Prueba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/prueba/Prueba.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DaoImplemt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DaoImplemt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/configuracion-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/configuracion-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/historialCompras.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/historialCompras.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/listarLibros.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/listarLibros.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/mostrarClientesyDatos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/mostrarClientesyDatos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/mostrarMasInformacion.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/mostrarMasInformacion.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/verCarrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/verCarrito.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/verCategorias.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/verCategorias.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +194,10 @@
       <workItem from="1707205272193" duration="10298000" />
       <workItem from="1707220512134" duration="5438000" />
       <workItem from="1707243616221" duration="3984000" />
-      <workItem from="1707328043980" duration="5764000" />
+      <workItem from="1707328043980" duration="5995000" />
+      <workItem from="1707403017586" duration="822000" />
+      <workItem from="1707413047157" duration="4702000" />
+      <workItem from="1707427268073" duration="1340000" />
     </task>
     <task id="LOCAL-00001" summary="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro">
       <option name="closed" value="true" />
@@ -208,5 +216,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro" />
     <option name="LAST_COMMIT_MESSAGE" value="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/Controlador.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
