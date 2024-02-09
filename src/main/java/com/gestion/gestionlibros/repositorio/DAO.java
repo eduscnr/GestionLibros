@@ -9,6 +9,7 @@ public interface DAO {
     public List<Libro> listarLibros();
     public List<Genero> listarGeneros();
     public List<Venta> listarVentaes();
+    public List<Autor> listaAutor();
     public List<Libro> bucarLibro(String tituloABuscar);
     public List<Venta> buscarVentaPorFecha(Date fecha);
     public List<Genero> buscarPorGenero(String genero);

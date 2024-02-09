@@ -9,6 +9,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="textarea" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <html>
 <head>
     <title>Editar libro</title>
@@ -114,12 +115,9 @@
                     Genero
                 </label>
                 <form:select path="genero.idGenero" id="genero" name="genero">
-                    <form:option value="1">Ciencia ficción</form:option>
-                    <form:option value="2">Magia</form:option>
-                    <form:option value="3">Suspense</form:option>
-                    <form:option value="4">Fantasia</form:option>
-                    <form:option value="5">Terror</form:option>
-                    <form:option value="6">Romance</form:option>
+                    <c:forEach var="generos" items="${listaGenero}">
+                        <form:option value="${generos.idGenero}">${generos.tipo}</form:option>
+                    </c:forEach>
                 </form:select>
             </div>
             <div class="mb-5">
@@ -130,12 +128,9 @@
                     autor
                 </label>
                 <form:select path="autor.idAutor" id="autor" name="autor">
-                    <form:option value="1">Suzanne Collins</form:option>
-                    <form:option value="2">J. K. Rowling</form:option>
-                    <form:option value="3">Jules Verne</form:option>
-                    <form:option value="4">Daisy Meadows</form:option>
-                    <form:option value="5">Stephen King</form:option>
-                    <form:option value="6">Mike Lightwood</form:option>
+                    <c:forEach var="autores" items="${listaAutores}">
+                        <form:option value="${autores.idAutor}">${autores.nombre}</form:option>
+                    </c:forEach>
                 </form:select>
             </div>
             <div>

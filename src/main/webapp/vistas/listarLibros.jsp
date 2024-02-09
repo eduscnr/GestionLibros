@@ -108,18 +108,18 @@
 
     <div class="max-w-4xl mx-auto grid grid-cols-3 gap-6">
         <c:forEach var="libro" items="${libros}">
-            <div class="shadow-md rounded-lg mx-2 w-72 xl:mb-0 mb-6 bg-gray-800 border-gray-700 mb-4 ml-4">
+            <div class="shadow-md rounded-lg mx-2 w-72 xl:mb-0 mb-6 bg-gray-800 border-gray-700 mb-4 ml-4 text-white">
                 <a href="mostrarInformacion/${libro.idLibro}">
                     <img class="rounded-t-lg p-8 mx-auto"
                          src="${libro.url}" alt="product image">
                 </a>
                 <div class="px-5 pb-5">
                     <a href="mostrarInformacion/${libro.idLibro}">
-                        <h3 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">${libro.titulo}</h3>
+                        <h3 class="text-gray-900 font-semibold text-xl tracking-tight text-white">${libro.titulo}</h3>
                     </a>
-                    <h4 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">${libro.autor.nombre}</h4>
+                    <h4 class="text-gray-900 font-semibold text-xl tracking-tight text-white">${libro.autor.nombre}</h4>
                     <div class="flex items-center justify-between mt-4">
-                        <span class="text-3xl font-bold text-gray-900 dark:text-white">${libro.precio}€</span>
+                        <span class="text-3xl font-bold text-gray-900 /text-white">${libro.precio}€</span>
                     </div>
                 </div>
             </div>

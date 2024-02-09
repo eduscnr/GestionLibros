@@ -42,6 +42,14 @@ public class DaoImplemt implements DAO{
     }
 
     @Override
+    public List<Autor> listaAutor() {
+        em = emf.createEntityManager();
+        String hql = "from Autor a";
+        Query query = em.createQuery(hql);
+        return query.getResultList();
+    }
+
+    @Override
     public List<Libro> bucarLibro(String tituloABuscar) {
         em = emf.createEntityManager();
         String hql = "from Libro l where l.titulo like :titulo";

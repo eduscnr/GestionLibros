@@ -73,6 +73,7 @@ public class Controlador {
     @GetMapping("/")
     public String mostrarInicioSesion(Model modelo){
         modelo.addAttribute("inicioUsuario", cliente);
+        modelo.addAttribute("cliente", cliente);
         return "inicioSesion";//JSP
     }
     @GetMapping("/logout")
@@ -144,6 +145,10 @@ public class Controlador {
     @GetMapping("/editarLibro/{idLibro}")
     public String irAEditarLibro(@PathVariable("idLibro") long idLibro,Model modelo){
         Libro libro = dao.obtenerLibroPorId(idLibro);
+        List<Genero> listaGenero = dao.listarGeneros();
+        List<Autor> listaAutores = dao.listaAutor();
+        modelo.addAttribute("listaGenero", listaGenero);
+        modelo.addAttribute("listaAutores", listaAutores);
         modelo.addAttribute("libro", libro);
         return "editarLibro";
     }
@@ -167,7 +172,7 @@ public class Controlador {
     @GetMapping("/verGeneros")
     public String listarGeneros(Model model){
         List<Genero> generos = dao.listarGeneros();
-        model.addAttribute("listaGenero", generos);
+            model.addAttribute("listaGenero", generos);
         model.addAttribute("listaTodosLosGeneros", generos);
         return "verCategorias";
     }
