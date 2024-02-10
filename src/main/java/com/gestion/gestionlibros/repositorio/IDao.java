@@ -5,7 +5,7 @@ import com.gestion.gestionlibros.modelo.*;
 import java.util.Date;
 import java.util.List;
 
-public interface DAO {
+public interface IDao {
     public List<Libro> listarLibros();
     public List<Genero> listarGeneros();
     public List<Venta> listarVentaes();

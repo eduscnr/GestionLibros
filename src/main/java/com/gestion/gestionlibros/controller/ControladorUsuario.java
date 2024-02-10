@@ -1,25 +1,21 @@
 package com.gestion.gestionlibros.controller;
 
 import com.gestion.gestionlibros.modelo.*;
-import com.gestion.gestionlibros.repositorio.DAO;
+import com.gestion.gestionlibros.repositorio.*;
 import jakarta.servlet.http.HttpSession;
-import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.crypto.Cipher;
 import java.util.ArrayList;
 import java.util.List;
 @Controller
-public class Controlador {
+public class ControladorUsuario {
     @Autowired
-    private DAO dao;
+    private IDao dao;
     @Autowired
     private Cliente cliente;
-    @Autowired
-    private Libro libros;
     private List<Carrito> listaCarrito = new ArrayList<>();
     @PostMapping("/agregarAlCarrito")
     public String agregarAlCarrito(@ModelAttribute("elementosCarrito") Carrito carrito, Model model) {
@@ -114,59 +110,15 @@ public class Controlador {
     }
 
     @GetMapping("/verHistorialCompra")
-    public String consultarHistorialCompra(Model model){
+    public String consultarHistorialCompra(Model model) {
         List<DetallesVenta> ventasRealizadas = new ArrayList<>();
-        for(Venta venta : cliente.getVentasCliente()){
-            for (DetallesVenta detallesVenta : venta.getDetallesVentasList()){
+        for (Venta venta : cliente.getVentasCliente()) {
+            for (DetallesVenta detallesVenta : venta.getDetallesVentasList()) {
                 ventasRealizadas.add(detallesVenta);
             }
         }
         model.addAttribute("detallesVentas", ventasRealizadas);
         return "historialCompras";
-    }
-    @GetMapping("/edicionLibros")
-    public String mostrarLibrosEdicion(Model modelo){
-        List<Libro> libros = dao.listarLibros();
-        modelo.addAttribute("listaLibros", libros);
-        return "edicionLibros";
-    }
-    @PostMapping("/irNuevoLibro")
-    public String nuevoLibro(Model modelo){
-        modelo.addAttribute("libro", libros);
-        return "nuevoLibro";
-    }
-    @PostMapping("/nuevoLibro")
-    public String enviarLibros(@ModelAttribute("libro") Libro libro){
-        if(dao.insertarNuevoLibro(libro)){
-            return "redirect:/edicionLibros";
-        }
-        return "error";
-    }
-    @GetMapping("/editarLibro/{idLibro}")
-    public String irAEditarLibro(@PathVariable("idLibro") long idLibro,Model modelo){
-        Libro libro = dao.obtenerLibroPorId(idLibro);
-        List<Genero> listaGenero = dao.listarGeneros();
-        List<Autor> listaAutores = dao.listaAutor();
-        modelo.addAttribute("listaGenero", listaGenero);
-        modelo.addAttribute("listaAutores", listaAutores);
-        modelo.addAttribute("libro", libro);
-        return "editarLibro";
-    }
-
-    @PostMapping("/editarLibro")
-    public String libroEditado(@ModelAttribute("libro") Libro libro){
-        if(dao.insertarNuevoLibro(libro)){
-            return "redirect:/edicionLibros";
-        }
-        return "error";
-    }
-
-    @GetMapping("/eliminar/{idLibro}")
-    public String eliminarLibro(@PathVariable("idLibro") long idLibro){
-        if(dao.eliminarLibro(idLibro)){
-            return "redirect:/edicionLibros";
-        }
-        return "error";
     }
 
     @GetMapping("/verGeneros")

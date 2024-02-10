@@ -1,28 +1,24 @@
-package com.gestion.gestionlibros.prueba;
+package com.gestion.gestionlibros.PersistenciaYDatos;
 
 import com.gestion.gestionlibros.modelo.Autor;
+import com.gestion.gestionlibros.modelo.Cliente;
 import com.gestion.gestionlibros.modelo.Genero;
 import com.gestion.gestionlibros.modelo.Libro;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class Prueba {
+public class CrearPersistenciaYDatos {
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("upLibros");
     static EntityManager em = emf.createEntityManager();
     static ApplicationContext context = new ClassPathXmlApplicationContext("configuracion-spring.xml");
     public static void main(String[] args) {
-        em.getTransaction().begin();
-        em.getTransaction().commit();
-        em.close();
-        /*crearPersistenciaYDatos();*/
+        crearPersistenciaYDatos();
     }
     public static void crearPersistenciaYDatos(){
 
@@ -51,7 +47,14 @@ public class Prueba {
         autor5.setNombre("Stephen King");
         Autor autor6 = context.getBean("autor", Autor.class);
         autor6.setNombre("Mike Lightwood");
-
+        Cliente administrador = context.getBean("cliente", Cliente.class);
+        administrador.setRol("administrador");
+        administrador.setNombre("admin");
+        administrador.setPassword("1234");
+        Cliente usuario  = context.getBean("cliente", Cliente.class);
+        usuario.setRol("usuario");
+        usuario.setNombre("Bautista");
+        usuario.setPassword("1234");
         List<Libro> libros = Arrays.asList(
                 //Genero1 y Autor1
                 new Libro("Los juegos del hambre", "Los Juegos del Hambre es una novela distópica de 2008 de la escritora estadounidense Suzanne Collins. Está escrita desde la perspectiva de Katniss Everdeen, una joven de 16 años que vive en la futura y postapocalíptica nación de Panem, en Norteamérica. El Capitolio, una metrópolis muy avanzada, ejerce el control político sobre el resto de la nación. Los Juegos del Hambre son un acontecimiento anual en el que un chico y una chica de entre 12 y 18 años de cada uno de los doce distritos que rodean el Capitolio son seleccionados por sorteo para competir en una batalla a muerte televisada.",
@@ -140,6 +143,8 @@ public class Prueba {
         for (Libro l: libros){
             em.persist(l);
         }
+        em.persist(administrador);
+        em.persist(usuario);
         em.getTransaction().commit();
         em.close();
     }

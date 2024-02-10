@@ -1,12 +1,14 @@
 package com.gestion.gestionlibros.modelo;
 
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 @Component
 @Entity
+@Scope("prototype")
 public class Cliente {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SECUENCIA_ID_CLIENTE")
     @SequenceGenerator(name = "SECUENCIA_ID_CLIENTE", sequenceName = "GENERADOR_ID_CLIENTE", allocationSize = 1)

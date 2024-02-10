@@ -119,7 +119,7 @@
                     </a>
                     <h4 class="text-gray-900 font-semibold text-xl tracking-tight text-white">${libro.autor.nombre}</h4>
                     <div class="flex items-center justify-between mt-4">
-                        <span class="text-3xl font-bold text-gray-900 /text-white">${libro.precio}€</span>
+                        <span class="text-3xl font-bold text-gray-900 text-white">${libro.precio}€</span>
                     </div>
                 </div>
             </div>
