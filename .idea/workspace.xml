@@ -11,15 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a1f47c5b-1f1e-4a98-b1a1-5bead3c0bde9" name="Changes" comment="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/ControladorUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/ControladorAdministrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/ControladorAdministrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/prueba/Prueba.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/PersistenciaYDatos/CrearPersistenciaYDatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/IDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DaoImplemt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/repositorio/DaoImplemt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/DetallesVentaId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/modelo/DetallesVentaId.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/inicioSesion.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/inicioSesion.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/vistas/listarLibros.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/vistas/listarLibros.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +23,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
+        <option value="Interface" />
         <option value="Class" />
         <option value="Jsp File" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -45,6 +38,13 @@
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
@@ -65,13 +65,13 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eduardo/Desktop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eduardo/Desktop/Reservas-main/ProyectoReservas_Eduardo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -83,7 +83,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 10.1.18" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.18" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 10.0.23" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.23" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="GestionLibros:war">
@@ -94,7 +94,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="755abea2-d4e0-4274-95e3-8ad9ab4092ca" />
-        <option name="HTTP_PORT" value="8085" />
+        <option name="HTTP_PORT" value="8086" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -195,8 +195,9 @@
       <workItem from="1707403017586" duration="822000" />
       <workItem from="1707413047157" duration="4702000" />
       <workItem from="1707427268073" duration="1340000" />
-      <workItem from="1707499902993" duration="2083000" />
-      <workItem from="1707560083852" duration="633000" />
+      <workItem from="1707478182036" duration="338000" />
+      <workItem from="1707478551584" duration="5224000" />
+      <workItem from="1707484381813" duration="387000" />
     </task>
     <task id="LOCAL-00001" summary="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro">
       <option name="closed" value="true" />
@@ -216,15 +217,8 @@
     <MESSAGE value="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro" />
     <option name="LAST_COMMIT_MESSAGE" value="Página de ventas de libros, funcinalidad mostrar libros y mostrar mas información de un libro" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/gestion/gestionlibros/controller/ControladorUsuario.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

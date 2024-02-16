@@ -24,7 +24,7 @@ public class DetallesVentaId implements Serializable {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("upLibros");
         EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("SELECT MAX(d.detallesVentasId.numLinea) FROM DetallesVenta d");
-        if(query != null){
+        if(query.getSingleResult() != null){
             int numLineaMax = (int) query.getSingleResult();
             em.close();
             numLinea = numLineaMax+1;

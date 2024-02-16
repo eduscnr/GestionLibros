@@ -14,8 +14,8 @@
       <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
       <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
       <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
-      <property name="hibernate.connection.username" value="PRUEBA"/>
-      <property name="hibernate.connection.password" value="TOOR"/>
+      <property name="hibernate.connection.username" value="EDUARDO"/>
+      <property name="hibernate.connection.password" value="1234"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.show_sql" value="false"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
